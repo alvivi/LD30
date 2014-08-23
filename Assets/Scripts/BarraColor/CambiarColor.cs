@@ -8,11 +8,16 @@ public class CambiarColor : MonoBehaviour {
 	GameObject[] tagR;
 	GameObject[] tagG;
 
+	GameObject[] tagPR;
+	GameObject[] tagPG;
+
 
 	// Use this for initialization
 	void Start () {
 		tagR = GameObject.FindGameObjectsWithTag("red");
 		tagG = GameObject.FindGameObjectsWithTag("green");
+		tagPR = GameObject.FindGameObjectsWithTag("pinchosR");
+		tagPG = GameObject.FindGameObjectsWithTag("pinchosG");
 	}
 	
 	// Update is called once per frame
@@ -28,6 +33,13 @@ public class CambiarColor : MonoBehaviour {
 			for(int i = 0; i < tagR.Length; i++){
 				tagR[i].GetComponent<BoxCollider2D>().enabled = false;
 			}
+
+			for(int i = 0; i < tagPG.Length; i++){
+				tagPG[i].GetComponent<BoxCollider2D>().enabled = true;
+			}
+			for(int i = 0; i < tagPR.Length; i++){
+				tagPR[i].GetComponent<BoxCollider2D>().enabled = false;
+			}
 		}
 
 		if(coll.gameObject.tag == "barraRed"){
@@ -36,6 +48,13 @@ public class CambiarColor : MonoBehaviour {
 			}
 			for(int i = 0; i < tagG.Length; i++){
 				tagG[i].GetComponent<BoxCollider2D>().enabled = false;
+			}
+
+			for(int i = 0; i < tagPR.Length; i++){
+				tagPR[i].GetComponent<BoxCollider2D>().enabled = true;
+			}
+			for(int i = 0; i < tagPG.Length; i++){
+				tagPG[i].GetComponent<BoxCollider2D>().enabled = false;
 			}
 		}
 	}

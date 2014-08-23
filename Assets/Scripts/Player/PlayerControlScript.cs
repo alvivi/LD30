@@ -17,6 +17,10 @@ public class PlayerControlScript : MonoBehaviour {
 	bool canJump = false;
 	float jumpingTime = 0f;
 
+	public float canJumpTimer;
+	float actualCanJump;
+
+	bool alive = true;
 	// Use this for initialization
 	void Start () {
 	
@@ -25,7 +29,9 @@ public class PlayerControlScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void FixedUpdate () {
-		checkControls();
+		if(alive){
+			checkControls();
+		}
 	}
 
 	void checkControls () {
@@ -46,7 +52,7 @@ public class PlayerControlScript : MonoBehaviour {
 
 		this.transform.GetComponent<Rigidbody2D>().velocity = velocity;
 
-		if(Input.GetKeyDown(KeyCode.W) && canJump){
+		if(Input.GetKeyDown(KeyCode.W) && (canJump || actualCanJump >= 0f)){
 			velocity = this.transform.GetComponent<Rigidbody2D>().velocity;
 			velocity.y = 0f;
 			this.transform.GetComponent<Rigidbody2D>().velocity = velocity;
@@ -69,13 +75,21 @@ public class PlayerControlScript : MonoBehaviour {
 				jumping = false;
 			}
 		}
+
+		actualCanJump -= Time.fixedDeltaTime;
+
 	}
 
 	void OnCollisionExit2D () {
 		canJump = false;
+		actualCanJump = canJumpTimer;
 	}
 
 	void OnCollisionEnter2D () {
 		canJump = true;
+	}
+
+	public void setAlive(bool a) {
+		alive = a;
 	}
 }

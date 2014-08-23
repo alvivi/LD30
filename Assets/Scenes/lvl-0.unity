@@ -855,6 +855,7 @@ MonoBehaviour:
   jumpContinueForce: 3000
   jumpMinusContinueForce: 3700
   jumpTime: .800000012
+  canJumpTimer: .300000012
 --- !u!114 &1335100854
 MonoBehaviour:
   m_ObjectHideFlags: 0
