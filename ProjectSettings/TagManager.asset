@@ -3,6 +3,13 @@
 --- !u!78 &1
 TagManager:
   tags:
+  - red
+  - green
+  - barraGreen
+  - barraRed
+  - PlanetaChico
+  - PlanetaChica
+  - puerta
   - 
   Builtin Layer 0: Default
   Builtin Layer 1: TransparentFX
