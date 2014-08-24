@@ -22,7 +22,7 @@ public class PlayerControlScript : MonoBehaviour {
 
 	bool alive = true;
 
-	public int collisions = 0;
+	int collisions = 0;
 	// Use this for initialization
 	void Start () {
 	
@@ -79,19 +79,25 @@ public class PlayerControlScript : MonoBehaviour {
 		}
 
 		actualCanJump -= Time.fixedDeltaTime;
+		if(collisions <= 0f)
+			canJump = false;
 
 	}
 
-	void OnCollisionExit2D () {
+	void OnCollisionExit2D (Collision2D coll) {
 		collisions--;
-		if(collisions <= 0){
+		if(collisions <= 0f){
 			canJump = false;
-			actualCanJump = canJumpTimer;
+			if(coll.gameObject.transform.position.y < transform.position.y){
+				actualCanJump = canJumpTimer;
+			}
 		}
 	}
 
-	void OnCollisionEnter2D () {
-		canJump = true;
+	void OnCollisionEnter2D (Collision2D coll) {
+		if(coll.gameObject.transform.position.y < transform.position.y){
+			canJump = true;
+		}
 		collisions++;
 	}
 
