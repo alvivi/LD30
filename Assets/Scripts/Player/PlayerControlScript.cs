@@ -21,6 +21,8 @@ public class PlayerControlScript : MonoBehaviour {
 	float actualCanJump;
 
 	bool alive = true;
+
+	int collisions = 0;
 	// Use this for initialization
 	void Start () {
 	
@@ -77,19 +79,33 @@ public class PlayerControlScript : MonoBehaviour {
 		}
 
 		actualCanJump -= Time.fixedDeltaTime;
+		if(collisions <= 0f)
+			canJump = false;
 
 	}
 
-	void OnCollisionExit2D () {
-		canJump = false;
-		actualCanJump = canJumpTimer;
+	void OnCollisionExit2D (Collision2D coll) {
+		collisions--;
+		if(collisions <= 0f){
+			canJump = false;
+			if(coll.gameObject.transform.position.y < transform.position.y){
+				actualCanJump = canJumpTimer;
+			}
+		}
 	}
 
-	void OnCollisionEnter2D () {
-		canJump = true;
+	void OnCollisionEnter2D (Collision2D coll) {
+		if(coll.gameObject.transform.position.y < transform.position.y){
+			canJump = true;
+		}
+		collisions++;
 	}
 
 	public void setAlive(bool a) {
 		alive = a;
+	}
+
+	public void setMinusCollisions() {
+		collisions--;
 	}
 }

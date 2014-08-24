@@ -84,6 +84,7 @@ GameObject:
   - 4: {fileID: 21908081}
   - 212: {fileID: 21908080}
   - 61: {fileID: 21908082}
+  - 114: {fileID: 21908083}
   m_Layer: 0
   m_Name: bloqueG
   m_TagString: green
@@ -136,6 +137,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_Size: {x: 2, y: 2}
   m_Center: {x: 0, y: 0}
+--- !u!114 &21908083
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 21908079}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e1a4153ff95248ca8907b9e8124e27b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collision: 0
 --- !u!1 &80266268
 GameObject:
   m_ObjectHideFlags: 0
@@ -146,6 +159,7 @@ GameObject:
   - 4: {fileID: 80266271}
   - 212: {fileID: 80266270}
   - 61: {fileID: 80266269}
+  - 114: {fileID: 80266272}
   m_Layer: 0
   m_Name: bloqueG
   m_TagString: green
@@ -198,6 +212,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5
+--- !u!114 &80266272
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 80266268}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e1a4153ff95248ca8907b9e8124e27b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collision: 0
 --- !u!1 &106641130
 GameObject:
   m_ObjectHideFlags: 0
@@ -855,7 +881,7 @@ MonoBehaviour:
   jumpContinueForce: 3000
   jumpMinusContinueForce: 3700
   jumpTime: .800000012
-  canJumpTimer: .300000012
+  canJumpTimer: .200000003
 --- !u!114 &1335100854
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -877,6 +903,7 @@ GameObject:
   - 4: {fileID: 1649843758}
   - 212: {fileID: 1649843757}
   - 61: {fileID: 1649843756}
+  - 114: {fileID: 1649843759}
   m_Layer: 0
   m_Name: bloqueR
   m_TagString: red
@@ -929,6 +956,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
+--- !u!114 &1649843759
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1649843755}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e1a4153ff95248ca8907b9e8124e27b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collision: 0
 --- !u!1 &1777569638
 GameObject:
   m_ObjectHideFlags: 0
@@ -1014,6 +1053,7 @@ GameObject:
   - 4: {fileID: 1779065867}
   - 212: {fileID: 1779065866}
   - 61: {fileID: 1779065868}
+  - 114: {fileID: 1779065869}
   m_Layer: 0
   m_Name: bloqueR
   m_TagString: red
@@ -1066,6 +1106,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_Size: {x: 2, y: 2}
   m_Center: {x: 0, y: 0}
+--- !u!114 &1779065869
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1779065865}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e1a4153ff95248ca8907b9e8124e27b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collision: 0
 --- !u!1 &1878279510
 GameObject:
   m_ObjectHideFlags: 0
@@ -1195,6 +1247,7 @@ GameObject:
   - 4: {fileID: 1906974471}
   - 212: {fileID: 1906974470}
   - 61: {fileID: 1906974469}
+  - 114: {fileID: 1906974472}
   m_Layer: 0
   m_Name: bloqueR
   m_TagString: red
@@ -1247,3 +1300,15 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 6
+--- !u!114 &1906974472
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1906974468}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e1a4153ff95248ca8907b9e8124e27b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collision: 0

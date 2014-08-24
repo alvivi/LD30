@@ -11,6 +11,7 @@ public class CambiarColor : MonoBehaviour {
 	GameObject[] tagPR;
 	GameObject[] tagPG;
 
+	GameObject player;
 
 	// Use this for initialization
 	void Start () {
@@ -18,6 +19,8 @@ public class CambiarColor : MonoBehaviour {
 		tagG = GameObject.FindGameObjectsWithTag("green");
 		tagPR = GameObject.FindGameObjectsWithTag("pinchosR");
 		tagPG = GameObject.FindGameObjectsWithTag("pinchosG");
+
+		player = GameObject.Find("player");
 	}
 	
 	// Update is called once per frame
@@ -32,6 +35,10 @@ public class CambiarColor : MonoBehaviour {
 			}
 			for(int i = 0; i < tagR.Length; i++){
 				tagR[i].GetComponent<BoxCollider2D>().enabled = false;
+				if(tagR[i].GetComponent<bloques>().collision){
+					tagR[i].GetComponent<bloques>().collision = false;
+					player.GetComponent<PlayerControlScript>().setMinusCollisions();
+				}
 			}
 
 			for(int i = 0; i < tagPG.Length; i++){
@@ -48,6 +55,10 @@ public class CambiarColor : MonoBehaviour {
 			}
 			for(int i = 0; i < tagG.Length; i++){
 				tagG[i].GetComponent<BoxCollider2D>().enabled = false;
+				if(tagG[i].GetComponent<bloques>().collision){
+					tagG[i].GetComponent<bloques>().collision = false;
+					player.GetComponent<PlayerControlScript>().setMinusCollisions();
+				}
 			}
 
 			for(int i = 0; i < tagPR.Length; i++){
