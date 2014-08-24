@@ -827,7 +827,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Size: {x: 2, y: 2}
+  m_Size: {x: 1, y: 2}
   m_Center: {x: 0, y: 0}
 --- !u!4 &1335100852
 Transform:
@@ -859,7 +859,9 @@ MonoBehaviour:
   jumpContinueForce: 3000
   jumpMinusContinueForce: 3700
   jumpTime: .800000012
+  deathForce: 0
   canJumpTimer: .200000003
+  alive: 1
 --- !u!114 &1335100854
 MonoBehaviour:
   m_ObjectHideFlags: 0

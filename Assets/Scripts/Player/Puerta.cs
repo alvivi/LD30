@@ -19,6 +19,7 @@ public class Puerta : MonoBehaviour {
 			string nextLvl = persistente.GetComponent<PersistenteScript>().nextLevelName(Application.loadedLevelName);
 			int num = persistente.GetComponent<PersistenteScript>().getCurrentLevel();
 			PlayerPrefs.SetInt("levelCompleted", num);
+			persistente.GetComponent<PersistenteScript>().setCurrentLevel();
 			Application.LoadLevel(nextLvl);
 		}
 

@@ -33,6 +33,18 @@ public class PersistenteScript : MonoBehaviour {
 			currentLvl = 1;
 		else if(lvlName == "lvl-2")
 			currentLvl = 2;
+		else if(lvlName == "lvl-3")
+			currentLvl = 3;
+		else if(lvlName == "lvl-4")
+			currentLvl = 4;
+		else if(lvlName == "lvl-5")
+			currentLvl = 5;
+		else if(lvlName == "lvl-6")
+			currentLvl = 6;
+		else if(lvlName == "lvl-7")
+			currentLvl = 7;
+		else if(lvlName == "lvl-8")
+			currentLvl = 8;
 	}
 
 	public string nextLevelName(string lvlName){
@@ -40,12 +52,28 @@ public class PersistenteScript : MonoBehaviour {
 			return "lvl-1";
 		else if(lvlName == "lvl-1")
 			return "lvl-2";
+		else if(lvlName == "lvl-2")
+			return "lvl-3";
+		else if(lvlName == "lvl-3")
+			return "lvl-4";
+		else if(lvlName == "lvl-4")
+			return "lvl-5";
+		else if(lvlName == "lvl-5")
+			return "lvl-6";
+		else if(lvlName == "lvl-6")
+			return "lvl-7";
+		else if(lvlName == "lvl-7")
+			return "lvl-8";
 
 		return "MainMenu";
 	}
 
 	public int getCurrentLevel() {
 		return currentLvl;
+	}
+
+	public void setCurrentLevel() {
+		currentLvl++;
 	}
 
 

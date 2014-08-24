@@ -13,6 +13,7 @@ public class PlayerControlScript : MonoBehaviour {
 	float jumpActualForce;
 	public float jumpTime;
 
+	public float deathForce;
 	Animator animator;
 
 	bool jumping = false;
@@ -22,9 +23,11 @@ public class PlayerControlScript : MonoBehaviour {
 	public float canJumpTimer;
 	float actualCanJump;
 
-	bool alive = true;
+	public bool alive = true;
+	bool deathFlag = false;
 
 	int collisions = 0;
+	Vector2 velocity;
 	// Use this for initialization
 	void Start () {
 	
@@ -36,6 +39,13 @@ public class PlayerControlScript : MonoBehaviour {
 	void FixedUpdate () {
 		if(alive){
 			checkControls();
+		}
+		else if(!deathFlag){
+			deathFlag = true;
+			velocity = Vector2.zero;
+			this.transform.GetComponent<Rigidbody2D>().velocity = velocity;
+			this.transform.GetComponent<Rigidbody2D>().AddForce(Vector2.up * deathForce);
+			this.transform.GetComponent<BoxCollider2D>().enabled = false;
 		}
 	}
 
@@ -57,7 +67,7 @@ public class PlayerControlScript : MonoBehaviour {
 			Camera.main.GetComponent<CameraScript>().lookRight = false;
 		}
 
-		Vector2 velocity = this.transform.GetComponent<Rigidbody2D>().velocity;
+		velocity = this.transform.GetComponent<Rigidbody2D>().velocity;
 		if (Mathf.Approximately (velocity.x, 0)) {
 			animator.SetInteger("animNumber", 0);
 		}
@@ -95,6 +105,9 @@ public class PlayerControlScript : MonoBehaviour {
 		actualCanJump -= Time.fixedDeltaTime;
 		if(collisions <= 0f)
 			canJump = false;
+
+		if(Input.GetKey(KeyCode.S))
+			alive = false;
 
 	}
 
