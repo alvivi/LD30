@@ -13,6 +13,8 @@ public class PlayerControlScript : MonoBehaviour {
 	float jumpActualForce;
 	public float jumpTime;
 
+	Animator animator;
+
 	bool jumping = false;
 	bool canJump = false;
 	float jumpingTime = 0f;
@@ -26,7 +28,8 @@ public class PlayerControlScript : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 	
-
+		animator = GetComponentsInChildren<Animator> ()[0];
+			
 	}
 	
 	// Update is called once per frame
@@ -38,15 +41,26 @@ public class PlayerControlScript : MonoBehaviour {
 
 	void checkControls () {
 		if(Input.GetKey(KeyCode.D) && !Input.GetKey(KeyCode.A)){
+			animator.SetInteger("animNumber", 1);
+			var s = transform.localScale;
+			s.x = 1;
+			transform.localScale = s;
 			this.transform.GetComponent<Rigidbody2D>().AddForce(Vector2.right * moveForce * Time.fixedDeltaTime);
 			Camera.main.GetComponent<CameraScript>().lookRight = true;
 		}
 		else if(Input.GetKey(KeyCode.A)){
+			animator.SetInteger("animNumber", 1);
+			var s = transform.localScale;
+			s.x = -1;
+			transform.localScale = s;
 			this.transform.GetComponent<Rigidbody2D>().AddForce(Vector2.right*(-1f) * moveForce * Time.fixedDeltaTime);
 			Camera.main.GetComponent<CameraScript>().lookRight = false;
 		}
 
 		Vector2 velocity = this.transform.GetComponent<Rigidbody2D>().velocity;
+		if (Mathf.Approximately (velocity.x, 0)) {
+			animator.SetInteger("animNumber", 0);
+		}
 		if(velocity.x >= horizontalSpeed)
 			velocity.x = horizontalSpeed;
 		if(velocity.x <= -horizontalSpeed)
