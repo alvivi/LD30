@@ -13,6 +13,8 @@ public class CambiarColor : MonoBehaviour {
 
 	GameObject player;
 
+	ParticleSystem chispas;
+
 	// Use this for initialization
 	void Start () {
 		tagR = GameObject.FindGameObjectsWithTag("red");
@@ -21,6 +23,8 @@ public class CambiarColor : MonoBehaviour {
 		tagPG = GameObject.FindGameObjectsWithTag("pinchosG");
 
 		player = GameObject.Find("player");
+
+		chispas = GameObject.Find("Chispas").GetComponent<ParticleSystem>();
 	}
 	
 	// Update is called once per frame
@@ -30,6 +34,7 @@ public class CambiarColor : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D coll) {
 		if(coll.gameObject.tag == "barraGreen"){
+			chispas.startColor = Color.blue;
 			for(int i = 0; i < tagG.Length; i++){
 				tagG[i].GetComponent<BoxCollider2D>().enabled = true;
 			}
@@ -50,6 +55,7 @@ public class CambiarColor : MonoBehaviour {
 		}
 
 		if(coll.gameObject.tag == "barraRed"){
+			chispas.startColor = Color.red;
 			for(int i = 0; i < tagR.Length; i++){
 				tagR[i].GetComponent<BoxCollider2D>().enabled = true;
 			}
