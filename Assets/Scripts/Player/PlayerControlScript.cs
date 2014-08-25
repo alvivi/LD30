@@ -34,7 +34,8 @@ public class PlayerControlScript : MonoBehaviour {
 		animator = GetComponentsInChildren<Animator> ()[0];
 			
 	}
-	
+
+
 	// Update is called once per frame
 	void FixedUpdate () {
 		if(alive){
@@ -42,6 +43,7 @@ public class PlayerControlScript : MonoBehaviour {
 		}
 		else if(!deathFlag){
 			deathFlag = true;
+			animator.SetInteger("animNumber", 2);
 			velocity = Vector2.zero;
 			this.transform.GetComponent<Rigidbody2D>().velocity = velocity;
 			this.transform.GetComponent<Rigidbody2D>().AddForce(Vector2.up * deathForce);
@@ -129,8 +131,9 @@ public class PlayerControlScript : MonoBehaviour {
 	}
 
 	public void setAlive(bool a) {
-		alive = a;
-	}
+				alive = a;
+		}
+
 
 	public void setMinusCollisions() {
 		collisions--;
