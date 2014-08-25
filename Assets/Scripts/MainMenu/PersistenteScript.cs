@@ -45,6 +45,8 @@ public class PersistenteScript : MonoBehaviour {
 			currentLvl = 7;
 		else if(lvlName == "lvl-8")
 			currentLvl = 8;
+		else if(lvlName == "lvl-9")
+			currentLvl = 9;
 	}
 
 	public string nextLevelName(string lvlName){
@@ -64,6 +66,8 @@ public class PersistenteScript : MonoBehaviour {
 			return "lvl-7";
 		else if(lvlName == "lvl-7")
 			return "lvl-8";
+		else if(lvlName == "lvl-8")
+			return "lvl-9";
 
 		return "MainMenu";
 	}
