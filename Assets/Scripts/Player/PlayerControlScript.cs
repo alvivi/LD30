@@ -52,7 +52,7 @@ public class PlayerControlScript : MonoBehaviour {
 	}
 
 	void checkControls () {
-		if(Input.GetKey(KeyCode.D) && !Input.GetKey(KeyCode.A)){
+		if((Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)) && !Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.LeftArrow)){
 			animator.SetInteger("animNumber", 1);
 			var s = transform.localScale;
 			s.x = 1;
@@ -60,7 +60,7 @@ public class PlayerControlScript : MonoBehaviour {
 			this.transform.GetComponent<Rigidbody2D>().AddForce(Vector2.right * moveForce * Time.fixedDeltaTime);
 			Camera.main.GetComponent<CameraScript>().lookRight = true;
 		}
-		else if(Input.GetKey(KeyCode.A)){
+		else if(Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)){
 			animator.SetInteger("animNumber", 1);
 			var s = transform.localScale;
 			s.x = -1;
@@ -80,7 +80,7 @@ public class PlayerControlScript : MonoBehaviour {
 
 		this.transform.GetComponent<Rigidbody2D>().velocity = velocity;
 
-		if(Input.GetKeyDown(KeyCode.W) && (canJump || actualCanJump >= 0f)){
+		if((Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow) )&& (canJump || actualCanJump >= 0f)){
 			velocity = this.transform.GetComponent<Rigidbody2D>().velocity;
 			velocity.y = 0f;
 			this.transform.GetComponent<Rigidbody2D>().velocity = velocity;
@@ -89,7 +89,7 @@ public class PlayerControlScript : MonoBehaviour {
 			jumpActualForce = jumpContinueForce;
 		}
 
-		if(Input.GetKey(KeyCode.W) && jumping){
+		if((Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow) )&& jumping){
 			this.transform.GetComponent<Rigidbody2D>().AddForce(Vector2.up * jumpActualForce * Time.fixedDeltaTime);
 			jumpActualForce -= jumpMinusContinueForce * Time.fixedDeltaTime;
 			if(jumpActualForce <= 0f)
@@ -108,7 +108,7 @@ public class PlayerControlScript : MonoBehaviour {
 		if(collisions <= 0f)
 			canJump = false;
 
-		if(Input.GetKey(KeyCode.S))
+		if(Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
 			alive = false;
 
 	}
