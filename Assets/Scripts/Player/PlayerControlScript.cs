@@ -3,7 +3,10 @@ using System.Collections;
 
 public class PlayerControlScript : MonoBehaviour {
 
+	public AudioClip jump;
+	public AudioClip die;
 
+	AudioSource audioS;
 
 	public float moveForce;
 	public float horizontalSpeed;
@@ -32,7 +35,8 @@ public class PlayerControlScript : MonoBehaviour {
 	void Start () {
 	
 		animator = GetComponentsInChildren<Animator> ()[0];
-			
+
+		audioS = GetComponent<AudioSource>();
 	}
 
 
@@ -42,6 +46,7 @@ public class PlayerControlScript : MonoBehaviour {
 			checkControls();
 		}
 		else if(!deathFlag){
+			audioS.PlayOneShot(die);
 			deathFlag = true;
 			animator.SetInteger("animNumber", 2);
 			velocity = Vector2.zero;
@@ -87,6 +92,7 @@ public class PlayerControlScript : MonoBehaviour {
 			this.transform.GetComponent<Rigidbody2D>().AddForce(Vector2.up * jumpForce);
 			jumping = true;
 			jumpActualForce = jumpContinueForce;
+			audioS.PlayOneShot(jump);
 		}
 
 		if((Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow) )&& jumping){
